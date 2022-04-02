@@ -27,13 +27,13 @@ rec {
     in
       c.value;
 
-    callLocklessFlake = path: let
+    lib.callLocklessFlake = path: inputs: let
       r = {outPath = path;} //
-      (import (path + "/flake.nix")).outputs (args // {self = r;});
+      (import (path + "/flake.nix")).outputs (inputs // {self = r;});
     in
       r;
 
-    dynamicGetWithParent = self.callLocklessFlake ./brother;
+    dynamicGetWithParent = self.lib.callLocklessFlake ./brother args;
 
     dynamicGetWithChild = let
       brother = import ./brother/default.nix;
