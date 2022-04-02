@@ -1,4 +1,5 @@
 {
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
   outputs = { self, nixpkgs }: rec {
     value = "sister";
     siblingValue = self.sibling.value;
