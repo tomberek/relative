@@ -16,10 +16,10 @@ rec {
     getWithParent = args.brother.value;
 
     getWithChild = let
-      c = builtins.getFlake (builtins.unsafeDiscardStringContext "path:./brother?narHash=${args.brother.sourceInfo.narHash}");
+       c = builtins.getFlake (builtins.unsafeDiscardStringContext "path:./brother?narHash=${args.brother.sourceInfo.narHash}");
     in c.value;
 
-    dynamicGetWithParent = (let r = (import ./brother/flake.nix).outputs (args // { self=r;}); in r ).value;
+    dynamicGetWithParent = (let r = (import ./brother/flake.nix).outputs (args.brother.inputs // { self=r;}); in r ).value;
 
     dynamicGetWithChild = let
       brother = import ./brother/default.nix;
