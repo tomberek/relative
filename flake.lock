@@ -1,0 +1,74 @@
+{
+  "nodes": {
+    "brother": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "narHash": "sha256-RQXqUpwJBiw9RZ9Tuue+9RmTfLt4jZ8PiVdDNuF95aA=",
+        "path": "./brother",
+        "type": "path"
+      },
+      "original": {
+        "path": "./brother",
+        "type": "path"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "narHash": "sha256-BXzQV8p/RR440EB9qY0ULYfTH0zSW1stjUCYeP4SF+E=",
+        "path": "/nix/store/hsff9pi1qinxljahr833z0xivr1apx27-source",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "narHash": "sha256-BXzQV8p/RR440EB9qY0ULYfTH0zSW1stjUCYeP4SF+E=",
+        "path": "/nix/store/hsff9pi1qinxljahr833z0xivr1apx27-source",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "narHash": "sha256-BXzQV8p/RR440EB9qY0ULYfTH0zSW1stjUCYeP4SF+E=",
+        "path": "/nix/store/hsff9pi1qinxljahr833z0xivr1apx27-source",
+        "type": "path"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "brother": "brother",
+        "nixpkgs": "nixpkgs_2",
+        "sister": "sister"
+      }
+    },
+    "sister": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "narHash": "sha256-0S9+OjWx5Bx/P1X0tWH0b45Cz9cHz3kWx6Oz9fOU+gE=",
+        "path": "./sister",
+        "type": "path"
+      },
+      "original": {
+        "path": "./sister",
+        "type": "path"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
