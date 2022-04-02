@@ -20,8 +20,10 @@ rec {
     hash = builtins.hashFile "sha256" ./brother;
     t = (builtins.getFlake "path:./brother").value;
 
+    # Use parent's inputs
     getWithParent = args.brother.value;
 
+    # Read child's lockfile to create inputs
     getWithChild = let
       c = builtins.getFlake (builtins.unsafeDiscardStringContext "path:./brother?narHash=${args.brother.sourceInfo.narHash}");
     in
@@ -29,17 +31,14 @@ rec {
 
     lib.callLocklessFlake = path: inputs: let
       r = {outPath = path;} //
-      (import (path + "/flake.nix")).outputs (inputs // {self = r;});
+      ((import (path + "/flake.nix")).outputs (inputs // {self = r;}));
     in
       r;
 
-    dynamicGetWithParent = self.lib.callLocklessFlake ./brother args;
+    # Use parent's inputs
+    dynamicGetWithParent = (self.lib.callLocklessFlake ./brother args).value;
 
-    dynamicGetWithChild = let
-      brother = import ./brother/default.nix;
-      brotherFunc = import ./brother/flake.nix;
-      r = brotherFunc.outputs (brother.inputs // {self = r;});
-    in
-      r.value;
+    # Read child's lockfile to create inputs
+    dynamicGetWithChild = (self.lib.callLocklessFlake ./brother (import ./brother/default.nix).inputs ).value;
   };
 }

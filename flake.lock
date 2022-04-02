@@ -8,7 +8,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-Mm6QByrcpSw3oWcN28s2GBJkHzrU981qUJbLg3SDRyk=",
+        "narHash": "sha256-F4cvF20QGggvX9PMMgKXg7badOsnOkoTSZ3e2UyGBhI=",
         "path": "./brother",
         "type": "path"
       },
